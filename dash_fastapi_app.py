@@ -6,6 +6,7 @@ from urllib import error, request
 
 from dash import Dash, Input, Output, State, dcc, html
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from flask import request as flask_request
 from pydantic import BaseModel
 from starlette.middleware.wsgi import WSGIMiddleware
@@ -28,6 +29,12 @@ fastapi_app = FastAPI(title="Dash + FastAPI Demo")
 @fastapi_app.post("/api/generate")
 def generate(payload: GenerateRequest) -> dict[str, str]:
     return {"result": build_message(payload.content)}
+
+
+@fastapi_app.get("/")
+def root() -> RedirectResponse:
+    """将根路径重定向到 Dash 页面，避免访问 / 时出现 404。"""
+    return RedirectResponse(url="/dash")
 
 
 def call_generate_api(content: str) -> str:
