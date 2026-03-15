@@ -6,6 +6,11 @@
 2. `dash_fastapi_app.py`：使用 Dash + FastAPI，点击“编辑”输入内容，点击“提交”后通过 FastAPI 后端接口生成“输入内容 + 当前时间”。
 
 ## 1) 运行 Hello World
+# Python Hello World
+
+这个项目包含一个简单的 Python 脚本，用于打印 `hello world`。
+
+## 运行方式
 
 ```bash
 python3 hello.py

@@ -51,7 +51,7 @@ def call_generate_api(content: str) -> str:
         return f"生成失败：{exc}"
 
 
-dash_app = Dash(__name__, requests_pathname_prefix="/dash/")
+dash_app = Dash(__name__)
 
 dash_app.layout = html.Div(
     [
