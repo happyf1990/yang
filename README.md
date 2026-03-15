@@ -1,11 +1,8 @@
-# Python 示例项目
+# Python Hello World
 
-这个项目包含两个脚本：
+这个项目包含一个简单的 Python 脚本，用于打印 `hello world`。
 
-1. `hello.py`：打印 `hello world`。
-2. `dash_fastapi_app.py`：使用 Dash + FastAPI，点击“编辑”输入内容，点击“提交”后通过 FastAPI 后端接口生成“输入内容 + 当前时间”。
-
-## 1) 运行 Hello World
+## 运行方式
 
 ```bash
 python3 hello.py
