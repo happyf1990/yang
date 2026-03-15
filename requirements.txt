@@ -1,0 +1,4 @@
+dash
+fastapi
+pydantic
+uvicorn
