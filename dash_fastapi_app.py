@@ -34,7 +34,7 @@ def generate(payload: GenerateRequest) -> dict[str, str]:
 @fastapi_app.get("/")
 def root() -> RedirectResponse:
     """将根路径重定向到 Dash 页面，避免访问 / 时出现 404。"""
-    return RedirectResponse(url="/dash/")
+    return RedirectResponse(url="/dash")
 
 
 def call_generate_api(content: str) -> str:
@@ -51,11 +51,7 @@ def call_generate_api(content: str) -> str:
         return f"生成失败：{exc}"
 
 
-dash_app = Dash(
-    __name__,
-    requests_pathname_prefix="/dash/",
-    routes_pathname_prefix="/dash/",
-)
+dash_app = Dash(__name__)
 
 dash_app.layout = html.Div(
     [
@@ -91,12 +87,6 @@ def enable_edit(n_clicks: int) -> bool:
 )
 def submit_content(_: int, content: str) -> str:
     return call_generate_api(content or "")
-
-
-@fastapi_app.get("/dash")
-def dash_redirect() -> RedirectResponse:
-    """将 /dash 重定向到 /dash/，避免相对资源路径异常。"""
-    return RedirectResponse(url="/dash/")
 
 
 fastapi_app.mount("/dash", WSGIMiddleware(dash_app.server))
